@@ -29,7 +29,7 @@ public class Account_Trgr_Handler {
             if(!ContactRecordsInsert.isEmpty())
             {
                 Insert ContactRecordsInsert;
-                System.debug('Contact Records Created for version 1: '+ContactRecordsInsert.size());
+                System.debug('Contact Records Created for version 2: '+ContactRecordsInsert.size());
             } 
         }
         catch(exception e)
