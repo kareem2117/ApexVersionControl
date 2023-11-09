@@ -1,4 +1,4 @@
-public class UtilityHopsital {
+public class UtilityHopsitalSet {
     
     public static void SetOfRecordsHospital()
     {
