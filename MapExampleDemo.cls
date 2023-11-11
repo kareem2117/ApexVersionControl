@@ -2,6 +2,7 @@ public class MapExampleDemo {
     
     Public static void DemoPutMap()
     {
+        /*
         Map <String,Integer> MapNameandAge = New Map<String,Integer>();
         
         // Important Map Methods
@@ -54,7 +55,43 @@ public class MapExampleDemo {
         System.debug('Values of Map are stored in the form of List and The Values present in List are : '+ListOfMap+' '+ListOfMap.size());
         
         Integer SizeofMap = MapNameandAge.size();
-        System.debug('The size of map is : '+SizeofMap);
+        System.debug('The size of map is : '+SizeofMap);*/
+        
+        List <Account> AccountList = New List <Account>();
+        AccountList = [Select id,Name, Rating, Type from Account];
+        
+        Map <Id,Account> MapOfAccount = New Map <Id,Account>(AccountList);
+        set <ID> SetofAccount = New Set <ID>(MapOfAccount.Keyset());
+        
+        /*
+        System.debug('Keys of Map are : '+SetofAccount+' '+SetofAccount.size());
+        
+        Integer SizeofMapOfAccount = MapOfAccount.size();
+        System.debug('Size of Map are : '+SizeofMapOfAccount);
+        System.debug('Values of Map are : '+MapOfAccount+''+SizeofMapOfAccount);
+        */    
+    }
+    
+    Public static void StoreParentAndChildInMap()
+    {
+        //List<Account> AccountList = New List<Account>();
+        //AccountList = 
+        //System.debug('AccountList : '+AccountList);
+        //List <Contact> ConList = New List <Contact>();
+        
+        Map <Id,List<Contact>> MapOfContact = New Map<Id,List<Contact>>();
+                
+        for(Account Acc : [SELECT Id,Name,Rating,Type, (SELECT Id,Name,Email,Phone FROM Contacts)FROM Account where name like 'Test Account 0%' Order by Name Limit 8])
+        {
+            //System.debug('ID of the Account : '+Acc.Id);
+            //System.debug('Name of the Account : '+Acc.Name);
+            //System.debug('Name of the Contact : '+Acc.Contacts);
+            //ConList.add(Acc.Contacts);
+            
+            MapOfContact.put(Acc.Id,Acc.Contacts);
+            
+        }
+        System.debug('MapOfContacts ==> '+MapOfContact);
         
     }
 

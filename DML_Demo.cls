@@ -1,5 +1,31 @@
 public class DML_Demo {
     
+    Public static void CreateContacts()
+    {
+        List <Contact> InsertCOntacts = New List<Contact>();
+        for (Integer i = 1; i<=5;i++)
+        {
+            Contact con = New Contact();
+            con.LastName = 'Test Contact record 1'+i;
+            con.Phone = '987689870'+i;
+            con.Email = 'Test1'+i+'@gmail.com';
+            con.AccountId = '0015g00001Sd9jKAAR';
+            InsertCOntacts.add(con);
+        }
+        if(!InsertCOntacts.isEmpty())
+        {
+            try
+            {
+                INSERT InsertCOntacts;
+                System.debug('Records Inserted Successfuly');
+            }
+            catch(Exception e)
+        	{
+            	System.debug('Error Message : '+e.getMessage());
+        	}
+        }   
+    }
+    
     Public static void DML_Insert()
     {
         Account acc = New Account();

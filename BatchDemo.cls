@@ -1,5 +1,4 @@
 public class BatchDemo Implements Database.Batchable<sObject> {
-    
     public Database.QueryLocator start(Database.BatchableContext bcx)
     {
         /*List<Account> AccList = New List <Account>();
@@ -15,7 +14,6 @@ public class BatchDemo Implements Database.Batchable<sObject> {
         return Database.getQueryLocator (q);
         // Proper way to Assign to a data type in batch Class Query Locator start Method      
     }
-    
     public void execute(Database.BatchableContext bcx, List<Account> ListofRecords)
     {
         // Processing
@@ -28,6 +26,7 @@ public class BatchDemo Implements Database.Batchable<sObject> {
         {
             acc.Type = 'Prospect';
             UpdatedList.add(acc);
+            System.debug('Records Updated Successfully');
         }
         system.debug('Final Records after adding to the list are : '+UpdatedList.size());
         if(!UpdatedList.isEmpty())
@@ -45,10 +44,8 @@ public class BatchDemo Implements Database.Batchable<sObject> {
         else
         {
         	System.debug('The List is Empty');    
-        }
-        
+        }   
     }
-    
     Public void finish(Database.BatchableContext bcx)
     {
     	// Post commit logic    
