@@ -81,17 +81,30 @@ public class MapExampleDemo {
         
         Map <Id,List<Contact>> MapOfContact = New Map<Id,List<Contact>>();
                 
-        for(Account Acc : [SELECT Id,Name,Rating,Type, (SELECT Id,Name,Email,Phone FROM Contacts)FROM Account where name like 'Test Account 0%' Order by Name Limit 8])
+        for(Account Acc : [SELECT Id,Name,Rating,Type, (SELECT Id,Name,Email,Phone,LeadSource FROM Contacts)FROM Account where name like 'Test Account 0%' Order by Name Limit 8])
         {
             //System.debug('ID of the Account : '+Acc.Id);
             //System.debug('Name of the Account : '+Acc.Name);
             //System.debug('Name of the Contact : '+Acc.Contacts);
             //ConList.add(Acc.Contacts);
             
-            MapOfContact.put(Acc.Id,Acc.Contacts);
-            
+            MapOfContact.put(Acc.Id,Acc.Contacts);   
         }
+        
         System.debug('MapOfContacts ==> '+MapOfContact);
+        
+    }
+    
+    Public static void UpdateChildContacts()
+    {
+        Map<Id,Contact> ContactMap = New Map <Id,Contact>();
+        
+        List<Account> AccountList = New List <Account>([SELECT Id,Name,Rating,Type, (SELECT Id,Name,Email,Phone,LeadSource FROM Contacts)FROM Account where name like 'Test Account 0%' Order by Name Limit 8]);
+        
+        for(Account Acc : AccountList)
+        {
+           // List <Contact> ContactsList = New List <Contact>([SELECT Id,Name,Email,Phone,LeadSource FROM Contact where AccountId = Acc.Id]);
+        }
         
     }
 

@@ -3,12 +3,12 @@ public class DML_Demo {
     Public static void CreateContacts()
     {
         List <Contact> InsertCOntacts = New List<Contact>();
-        for (Integer i = 1; i<=5;i++)
+        for (Integer i = 1358; i<=5;i++)
         {
             Contact con = New Contact();
             con.LastName = 'Test Contact record 1'+i;
-            con.Phone = '987689870'+i;
-            con.Email = 'Test1'+i+'@gmail.com';
+            con.Phone = '98770'+i;
+            con.Email = 'TWorld1'+i+'@gmail.com';
             con.AccountId = '0015g00001Sd9jKAAR';
             InsertCOntacts.add(con);
         }
@@ -28,13 +28,18 @@ public class DML_Demo {
     
     Public static void DML_Insert()
     {
-        Account acc = New Account();
-        acc.Name = 'Test Account 02';
-        acc.Phone = '98765435690';
+        List <Account> AccountList = New List <Account>();
+        for (Integer i = 1; i<=1358;i++)
+        {
+            Account acc = New Account();
+        	acc.Name = 'Test Records '+1;
+        	acc.Phone = '987690'+i;
+            AccountList.add(acc);
+        }
         try
         {
-            INSERT acc;
-            system.debug('Record Created Successfull : '+acc.Name);
+            INSERT AccountList;
+            system.debug('Record Created Successfull : '+AccountList);
         }
         catch(exception e)
         {

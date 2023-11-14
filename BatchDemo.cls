@@ -26,7 +26,7 @@ public class BatchDemo Implements Database.Batchable<sObject> {
         {
             acc.Type = 'Prospect';
             UpdatedList.add(acc);
-            System.debug('Records Updated Successfully');
+            //System.debug('Records Updated Successfully');
         }
         system.debug('Final Records after adding to the list are : '+UpdatedList.size());
         if(!UpdatedList.isEmpty())
